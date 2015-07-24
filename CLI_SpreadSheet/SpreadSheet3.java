@@ -5,6 +5,10 @@ import java.util.StringTokenizer;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
+
+/**
+* Spreadsheet is a 2 dimesnional array of cell units
+*/
 public class SpreadSheet3 {
     cell[][] X=new cell[10][5];//create several cells
     void addCell(int i,int j){
@@ -52,6 +56,10 @@ public class SpreadSheet3 {
         
     }
 }
+
+/**
+*  A unit of the spreadsheet
+*/
 class cell extends Observable implements Observer{
    
     static cell[][] X=new cell[10][5];
@@ -75,6 +83,10 @@ class cell extends Observable implements Observer{
             txt=input;
         }
     }
+	
+	/**
+	*	return true if @param input is a floating point number
+	*/
     public boolean isNum( String input ){  
         try{  
             Float.parseFloat( input );  
@@ -84,10 +96,15 @@ class cell extends Observable implements Observer{
             return false;  
         }  
     }
+	
     @Override
     public void update(Observable o, Object arg) {
          setEntry(X);
     }
+	
+	/**
+	*	add data to cell
+	*/
     void setEntry(cell[][] X){
         cell.X=X;
         String input=eqn;
@@ -121,6 +138,10 @@ class cell extends Observable implements Observer{
             compute(temp);
         }
     }
+	
+	/**
+	* Computes a mathematical expression in the form of a string
+	*/
     void compute(String temp){
         temp=temp.replaceAll("=", "");
         ScriptEngineManager manager = new ScriptEngineManager();
