@@ -13,6 +13,42 @@ public class SpreadSheet3 {
         X[i][j].setName(name);
     }
     public static void main(String[] args) {
+        SpreadSheet3 sp=new SpreadSheet3();
+        for(int i=0;i<10;i++){
+            for(int j=0;j<5;j++){
+                sp.addCell(i,j);
+            }
+        }
+        sp.X[0][0].setEntry("4");
+        sp.X[0][0].setEntry(sp.X);
+        sp.X[0][1].setEntry("=2.3+A0");
+        sp.X[0][0].addObserver(sp.X[0][1]);
+        sp.X[0][1].setEntry(sp.X);
+        sp.X[1][0].setEntry("=A0*A1");
+        sp.X[0][1].addObserver(sp.X[1][0]);
+        sp.X[0][0].addObserver(sp.X[1][0]);
+        sp.X[1][0].setEntry(sp.X);
+        sp.X[1][1].setEntry("=B0-A1");
+        sp.X[0][1].addObserver(sp.X[1][1]);
+        sp.X[1][0].addObserver(sp.X[1][1]);
+        sp.X[1][1].setEntry(sp.X);
+        
+        System.out.println(sp.X[0][0].txt+"\tcell "+sp.X[0][0].name+" has no equation  "+sp.X[0][0].eqn);
+        System.out.println(sp.X[0][1].txt+"\tcell "+sp.X[0][1].name+" has the equation  "+sp.X[0][1].eqn);
+        //System.out.println(sp.X[0][2].txt+"");
+        System.out.println(sp.X[1][0].txt+"\tcell "+sp.X[1][0].name+" has the equation  "+sp.X[1][0].eqn);
+        System.out.println(sp.X[1][1].txt+"\tcell "+sp.X[1][1].name+" has the equation  "+sp.X[1][1].eqn);
+        
+        System.out.println("\nChange the content in A0 into 50 to observe the changes");
+        
+        sp.X[0][0].setEntry("50");
+        sp.X[0][0].setEntry(sp.X);
+        
+        System.out.println(sp.X[0][0].txt+"\tcell "+sp.X[0][0].name+" has no equation  "+sp.X[0][0].eqn);
+        System.out.println(sp.X[0][1].txt+"\tcell "+sp.X[0][1].name+" has the equation  "+sp.X[0][1].eqn);
+        //System.out.println(sp.X[0][2].txt+"");
+        System.out.println(sp.X[1][0].txt+"\tcell "+sp.X[1][0].name+" has the equation  "+sp.X[1][0].eqn);
+        System.out.println(sp.X[1][1].txt+"\tcell "+sp.X[1][1].name+" has the equation  "+sp.X[1][1].eqn);
         
     }
 }
